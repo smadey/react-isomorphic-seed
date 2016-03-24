@@ -42,6 +42,7 @@ function runServer(cb) {
 
   server = cp.spawn('node', [serverPath], {
     env: Object.assign({ NODE_ENV: 'development' }, process.env),
+    // execArgv: /(^|\|)\-\-debug\-brk=\d+($|\|)/.test(process.execArgv.join('|')) ? [`--debug-brk=${process.debugPort + 1}`] : [],
     silent: false,
   });
 

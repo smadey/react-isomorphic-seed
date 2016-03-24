@@ -9,6 +9,7 @@
 
 import {
   GraphQLObjectType as ObjectType,
+  GraphQLInt as IntType,
   GraphQLString as StringType,
   GraphQLNonNull as NonNull,
 } from 'graphql';
@@ -16,11 +17,11 @@ import {
 const NewsItemType = new ObjectType({
   name: 'NewsItem',
   fields: {
+    id: { type: new NonNull(IntType) },
     title: { type: new NonNull(StringType) },
-    link: { type: new NonNull(StringType) },
-    author: { type: StringType },
-    publishedDate: { type: new NonNull(StringType) },
-    contentSnippet: { type: StringType },
+    image: { type: new NonNull(StringType) },
+    type: { type: new NonNull(IntType) },
+    ga_prefix: { type: new NonNull(StringType) },
   },
 });
 

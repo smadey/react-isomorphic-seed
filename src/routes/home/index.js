@@ -13,7 +13,7 @@ import fetch from '../../core/fetch';
 
 export const path = '/';
 export const action = async (state) => {
-  const response = await fetch('/graphql?query={news{title,link,contentSnippet}}');
+  const response = await fetch('/graphql?query={news{id,title,image,type,ga_prefix}}');
   const { data } = await response.json();
   state.context.onSetTitle('React.js Starter Kit');
   return <Home news={data.news} />;

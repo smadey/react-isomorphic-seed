@@ -15,15 +15,12 @@ function Home({ news }) {
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <h1 className={s.title}>React.js News</h1>
+        <h1 className={s.title}>知乎日报最新内容</h1>
         <ul className={s.news}>
           {news.map((item, index) => (
             <li key={index} className={s.newsItem}>
-              <a href={item.link} className={s.newsTitle}>{item.title}</a>
-              <span
-                className={s.newsDesc}
-                dangerouslySetInnerHTML={{ __html: item.contentSnippet }}
-              />
+              <a className={s.newsTitle} href={'http://daily.zhihu.com/story/' + item.id}>{item.title}</a>
+              <img className={s.newsImage} src={item.image} />
             </li>
           ))}
         </ul>
@@ -34,9 +31,11 @@ function Home({ news }) {
 
 Home.propTypes = {
   news: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    contentSnippet: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    type: PropTypes.number.isRequired,
+    ga_prefix: PropTypes.string.isRequired,
   })).isRequired,
 };
 
